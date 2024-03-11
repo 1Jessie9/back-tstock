@@ -13,16 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        /* Artisan::call('db:seed', [
+        Artisan::call('db:seed', [
             '--class' => RoleSeeder::class
-        ]); */
+        ]);
 
         Artisan::call('db:seed', [
             '--class' => ProductExampleSeeder::class

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class RAMOption extends Model
 {
+    protected $table = 'ram_options';
+
     public function products()
     {
         return $this->hasMany(Product::class);

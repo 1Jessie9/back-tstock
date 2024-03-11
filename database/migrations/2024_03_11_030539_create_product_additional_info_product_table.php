@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->string('title');
             $table->string('description');
-            $table->string('image_path');
+            $table->text('image_path');
+            $table->json('features');
             $table->boolean('enabled');
             $table->timestamps();
 
