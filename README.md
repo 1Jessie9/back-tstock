@@ -1,7 +1,8 @@
 # Tstock
 ## Yessica Paola Cardenas Niño
 
-¡Hola! Este proyecto es la estructura back-end para el proyecto de la tienda online tstock de [https://github.com/1Jessie9/tstock]
+¡Hola! Este proyecto es la estructura back-end para el proyecto de la tienda online tstock de [https://github.com/1Jessie9/tstock].
+PD: Aún estamos en proceso por lo cual en estos momentos solo comenzaremos con las tablas principales
 
 ## Requisitos Previos
 
