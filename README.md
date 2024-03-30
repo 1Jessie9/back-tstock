@@ -34,10 +34,17 @@ Para ejecutar este proyecto, necesitas tener instalado lo siguiente:
     php artisan key:generate
 
 ## Instalación
-Para crear las tablas en tu base de datos, ejecuta:
+Para crear las tablas, ejecuta:
 
     + php artisan migrate
 
-Para poblar tus tablas con datos iniciales, ejecuta:
+Para completar tus tablas con datos iniciales, ejecuta:
 
     + php artisan db:seed
+
+Para iniciar la conexión, ejecuta:
+
+    + php artisan serve --port=3000
+
+Puedes probar el CRUD con postman localmente, este el link del espacio de trabajo en postman:
+[CRUD postman](https://www.postman.com/technical-specialist-85665808/workspace/back-stock/collection/33528189-78a94dbc-3f74-4a29-8a8b-5c82aea13be4)
