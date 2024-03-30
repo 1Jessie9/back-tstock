@@ -44,7 +44,7 @@ Para completar tus tablas con datos iniciales, ejecuta:
 
 Para iniciar la conexión, ejecuta:
 
-    + http://127.0.0.1:3000
+    + php artisan serve --port=3000
 
 Puedes probar el CRUD con postman localmente, este el link del espacio de trabajo en postman:
 [CRUD postman](https://www.postman.com/technical-specialist-85665808/workspace/back-stock/collection/33528189-78a94dbc-3f74-4a29-8a8b-5c82aea13be4)
