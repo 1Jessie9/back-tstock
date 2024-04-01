@@ -10,6 +10,25 @@ class Product extends Model
     use HasFactory;
 
     protected $table = "product";
+    protected $fillable = [
+        'brand_id',
+        'hard_drive_type_id',
+        'hard_drive_size_id',
+        'ram_id',
+        'title',
+        'description',
+        'price',
+        'enabled',
+        'specifications',
+    ];
+
+    protected $casts = [
+        'specifications' => 'array',
+    ];
+
+    protected $attributes = [
+        'specifications' => '[]',
+    ];
 
     public function brand()
     {
@@ -44,5 +63,10 @@ class Product extends Model
     public function shoppingCarts()
     {
         return $this->hasMany(ShoppingCart::class);
+    }
+
+    public function getSpecificationsAttribute($value)
+    {
+        return json_decode($value, true);
     }
 }

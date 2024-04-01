@@ -112,4 +112,12 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Cuenta eliminada con éxito.'], 200);
     }
+
+    // verificar si el usuario autenticado tiene el permiso
+    public function checkSuperAdminPermission(Request $request)
+    {
+        // $hasPermission = $request->user()->hasRol('superAdmin');
+        $hasRole = $request->user()->hasRole('superAdmin');
+        return response()->json(['hasSuperAdminRole' => $hasRole]);
+    }
 }

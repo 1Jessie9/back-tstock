@@ -138,8 +138,7 @@ class ProductExampleSeeder extends Seeder
         ]);
 
         // Creación de usuarios
-        User::factory(10)->create();
-        $userAdminExample = User::first();
+        $userAdminExample = User::where('email', 'admin@tstock.com')->first();
         $userAdminExample->assignRole('superAdmin');
 
         // Creación de comentarios
