@@ -5,7 +5,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://1jessie9.github.io/tstock/', 'http://localhost:4200'],
+    'allowed_origins' => ['https://1jessie9.github.io/', 'http://localhost:4200'],
 
     'allowed_origins_patterns' => [],
 
