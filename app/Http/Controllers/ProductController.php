@@ -12,6 +12,9 @@ class ProductController extends Controller
 {
     public function store(Request $request)
     {
+        $hasRole = $request->user()->hasRole('superAdmin');
+        if (!$hasRole) return null;
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|min:5',
             'description' => 'required|string|min:10',
@@ -36,9 +39,7 @@ class ProductController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        error_log(print_r($request->input('specifications'), TRUE));
         $specifications = $request->input('specifications');
-        error_log(print_r(json_encode($specifications), TRUE));
         $specificationsJson = json_encode($specifications);
 
         $product = Product::create(array_merge(
@@ -104,5 +105,49 @@ class ProductController extends Controller
             ->get();
 
         return response()->json($products);
+    }
+
+    public function getProductById(Request $request)
+    {
+        $query = Product::with(['additionalInfo', 'gallery'])
+            ->where('id', $request->id)
+            ->first();
+
+        return response()->json($query);
+    }
+
+    public function destroyImage(Request $request)
+    {
+        $hasRole = $request->user()->hasRole('superAdmin');
+        if (!$hasRole) return null;
+
+        $query = ProductGallery::find($request->id)->delete();
+
+        return response()->json($query);
+    }
+
+    public function updateProductTitle(Request $request)
+    {
+        // Validación de datos de entrada
+        $validated = $request->validate([
+            'id' => 'required|integer',
+            'title' => 'required|string|max:255',
+        ]);
+
+        $user = $request->user();
+        if (!$user->hasRole('superAdmin')) {
+            // Devolver respuesta para acceso no autorizado
+            return response()->json(['error' => 'No autorizado'], 403);
+        }
+
+        $product = Product::find($request->id);
+        if (!$product) {
+            // Devolver respuesta si el producto no se encuentra
+            return response()->json(['error' => 'Producto no encontrado'], 404);
+        }
+
+        $product->update(['title' => $request->title]);
+
+        return response()->json($product);
     }
 }
